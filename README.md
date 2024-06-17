@@ -69,7 +69,17 @@ This project is a web application that integrates a MySQL database with Google S
    npm install
    ```
 
-3. **Start the client:**
+3. **Set up environment variables:**
+
+   - Create a `.env` file in the root directory and add the following environment variables:
+
+     ```
+     REACT_APP_API_URL=http://localhost:5000
+     REACT_APP_SPREADSHEET_URL=https://docs.google.com/spreadsheets/d/1t6o5SqXaHJsbljXG1_Al94DIM_XNIVB6Kqum-VCIjV4/edit
+
+     ```
+
+4. **Start the client:**
    ```bash
    npm start
    ```

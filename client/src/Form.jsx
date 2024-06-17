@@ -14,20 +14,18 @@ const Form = () => {
   const handleRefresh = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/refresh-sheet"
+        `${process.env.REACT_APP_API_URL}/api/refresh-sheet`
       );
-      if (response.status == 200)
+      if (response.status === 200) {
         toast.success("Sheet refreshed successfully!");
+      }
     } catch (error) {
       toast.error("Error refreshing sheet.");
     }
   };
 
   const handleShowSpreadsheet = () => {
-    window.open(
-      "https://docs.google.com/spreadsheets/d/1t6o5SqXaHJsbljXG1_Al94DIM_XNIVB6Kqum-VCIjV4/edit",
-      "_blank"
-    );
+    window.open(process.env.REACT_APP_SPREADSHEET_URL, "_blank");
   };
 
   useEffect(() => {
@@ -58,11 +56,14 @@ const Form = () => {
     }
 
     try {
-      const response = await axios.post("http://localhost:5000/api/form", {
-        formType,
-        name,
-        phoneNumber,
-      });
+      const response = await axios.post(
+        `${process.env.REACT_APP_API_URL}/api/form`,
+        {
+          formType,
+          name,
+          phoneNumber,
+        }
+      );
       if (response.status === 201) {
         toast.success("Data Submitted");
       }
